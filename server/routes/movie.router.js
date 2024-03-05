@@ -20,19 +20,21 @@ router.get('/', (req, res) => {
 });
 
 // Get individual movie from movies with genre data from movies_genres.genre_id (MANY-TO-MANY RELATIONSHIP)
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
-  const query = `SELECT movies.id AS id, movies.title AS title, movies.poster AS poster, movies.description AS description,
-  STRING_AGG(genres.name) AS genres FROM movies
-  JOIN movies_genres ON movies_genres.movie_id = movies.id
+  const query = `SELECT movies.title AS title, movies.poster AS poster, movies.description AS description, STRING_AGG(genres.name, ', ') AS genre 
+  FROM movies
+  JOIN movies_genres ON movies.id = movies_genres.movie_id
   JOIN genres ON genres.id = movies_genres.genre_id
   WHERE movies.id = $1
-  GROUP BY movies.id
-  ORDER BY movies.id;`;
+  GROUP BY movies.id;`;
 
   pool
     .query(query, [id])
     .then((result) => {
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: 'Movie not found' });
+      }
       res.send(result.rows[0]);
     })
     .catch((error) => {
