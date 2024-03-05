@@ -1,15 +1,46 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 function DetailsPage() {
+  // Calling id from params
+  const movies = useSelector((store) => store.movies);
+  const { id } = useParams();
+  const [movieData, setMovieData] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    //array.find() method helps find the movie object by directly looking for the specific id
+    const movie = movies.find((movieItem) => movieItem.id == parseInt(id));
+    setMovieData(movie);
+  }, [movies, id]);
+
+  const handleBackToMovies = () => {
+    console.log('in handleBackToMovies');
+    history.push('/');
+  };
   return (
     <>
-      <div data-testid="movieDetails" className="movieDtails"></div>
+      {/* TO-DO: "movieDetails attribute added." */}
+      <div data-testid="movieDetails" className="movieDetails">
+        <h1>Movie Details</h1>
+        {movieData && (
+          <div>
+            <h3>{movieData.title}</h3>
+            <img src={movieData.poster} alt={movieData.title} />
+            <p>Description: {movieData.description}</p>
+            {/* TO-DO: make genre appears here. */}
+            <p>Genre: {movieData.genre_names}</p>
+          </div>
+        )}
+        {/* TO-DO: Must have a "back to movie list" button with data-testid="toList" attributes */}
+        <button data-testid="toList" onClick={handleBackToMovies}>
+          Back
+        </button>
+      </div>
     </>
   );
 }
 
 export default DetailsPage;
-
-// This view should show all details including ALL the genres for the selected movie, as well as the title, description, and poster image. Use Sagas and Redux to handle these requests and data.
-//  The details page must have a data-testid="movieDetails" attribute.
-//  The details page must have a "back to movie list" button, which should bring the user back to the Home/List Page.
-//  The "back to movie list" button must have a data-testid="toList" attribute.
-// Hint: You can make a GET request for a specific movie! Remember req.params and :id?
