@@ -23,23 +23,23 @@ function DetailsPage() {
     <>
       {/* TO-DO: "movieDetails attribute must be add" */}
       <div className="movieImage">
-        <img src={movie.poster} />
-      </div>
-      <div data-testid="movieDetails" className="movieDetails">
         <h1>Movie Details</h1>
-        <div className="movieDescription">
-          <h3>{movie.title}</h3>
-          <p>{movie.description}</p>
-          {/* TO-DO: make genre appears here */}
-          <p>Genres: {movie.genre}</p>
-          {/* TO-DO: must have a back toList button */}
-          <button
-            data-testid="toList"
-            className="backButton"
-            onClick={handleBackToMovies}
-          >
-            Back
-          </button>
+        <img src={movie.poster} />
+        <div data-testid="movieDetails" className="movieDetails">
+          <div className="movieDescription">
+            <h3>{movie.title}</h3>
+            <p>{movie.description}</p>
+            {/* TO-DO: make genre appears here */}
+            <p>Genres: {movie.genre}</p>
+            {/* TO-DO: must have a back toList button */}
+            <button
+              data-testid="toList"
+              className="backButton"
+              onClick={handleBackToMovies}
+            >
+              Back
+            </button>
+          </div>
         </div>
       </div>
     </>
