@@ -25,7 +25,6 @@ function* fetchAllMovies() {
 }
 
 function* fetchMovieDetails(action) {
-  const id = action.payload;
   try {
     // Get the movies:
     const moviesDetailsResponse = yield axios.get(`/api/movies/${id}`);
