@@ -4,8 +4,10 @@ function MovieItem({ movie }) {
   const history = useHistory();
 
   const handleClickToDetails = (id) => {
+    console.log('handleClickToDetails', { id });
     history.push(`/detailsPage/${id}`);
   };
+
   return (
     <>
       <div data-testid="movieItem">
@@ -13,8 +15,8 @@ function MovieItem({ movie }) {
         {/* TO-DO: When click on image, it navigates to DetailsPage about the {movie.id} */}
         <img
           src={movie.poster}
-          alt={movie.title}
           data-testid="toDetails"
+          alt={movie.title}
           onClick={() => handleClickToDetails(movie.id)}
         />
       </div>
