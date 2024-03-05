@@ -75,3 +75,10 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+
+SELECT movies.title AS title, movies.poster AS poster, movies.description AS description, genres.name AS genre FROM movies
+  JOIN movies_genres ON movies_genres.movie_id = movies.id
+  JOIN genres ON genres.id = movies_genres.genre_id
+  WHERE movies.id = $1
+  GROUP BY movies.id;
