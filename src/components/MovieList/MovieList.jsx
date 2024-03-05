@@ -15,9 +15,13 @@ function MovieList() {
     <main>
       <h1>Movie List</h1>
       <section className="movies">
-        {movies.map((movie) => {
-          return <MovieItem movie={movie} key={movie.id} />;
-        })}
+        {movies.map((movie, index) => (
+          // <div data-testid="movieItem" key={movie.id}>
+          //   <h3>{movie.title}</h3>
+          //   <img src={movie.poster} alt={movie.title} />
+          // </div>
+          <MovieItem movie={movie} key={index} />
+        ))}
       </section>
     </main>
   );
