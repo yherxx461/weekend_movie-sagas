@@ -31,7 +31,7 @@ function DetailsPage() {
             <img src={movieData.poster} alt={movieData.title} />
             <p>Description: {movieData.description}</p>
             {/* TO-DO: make genre appears here. */}
-            <p>Genre: {movieData.genre_names}</p>
+            <p>Genre: {movieData.genre}</p>
           </div>
         )}
         {/* TO-DO: Must have a "back to movie list" button with data-testid="toList" attributes */}
