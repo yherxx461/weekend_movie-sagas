@@ -24,7 +24,7 @@ Hint: You can make a GET request for a specific movie! Remmember req.params and 
 ## Screen Shot
 
 ![Movie List](<Screenshot 2024-03-05 at 12.34.45 AM.png>)
-![Movie Details](<Screenshot 2024-03-05 at 12.32.56 AM.png>)
+![Movie Details](<Screenshot 2024-03-05 at 5.46.08 PM.png>)
 
 ### Prerequisites
 
