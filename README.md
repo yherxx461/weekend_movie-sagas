@@ -14,26 +14,17 @@ This project is designed to be a code challenge for users who want to test their
 ### Prerequisites
 
 Node
-
-```
 Postgres
-```
-
 Git
-
-```
 React-Redux
 
 ## Installation
 
 Install project dependencies
-```
-
 npm install
+npm run test
 
 ```
-npm run test
-``
 
 1. Create a database named `saga_movies_weekend` in Postico.
 2. Copy and paste the queries in the `database.sql` file to create all necessary tables and data.
@@ -49,17 +40,10 @@ Users can
 ## Built With
 
 React
-```
-
 Node.js
-
-```
 Express
-```
-
 PostgreSQL
 
-```
 ## Acknowledgement
 
 Special thanks to Prime Digital Academy for the support and guidance during the development of this application.
@@ -67,4 +51,13 @@ Special thanks to Prime Digital Academy for the support and guidance during the 
 ## Support
 
 If you have any questions or concerns, please reach out to me at yher.prime@gmail.com
+
+```
+
+```
+
+```
+
+```
+
 ```
