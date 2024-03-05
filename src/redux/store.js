@@ -27,7 +27,9 @@ function* fetchAllMovies() {
 function* fetchMovieDetails(action) {
   try {
     // Get the movies:
-    const moviesDetailsResponse = yield axios.get(`/api/movies/${id}`);
+    const moviesDetailsResponse = yield axios.get(
+      `/api/movies/${action.payload}`
+    );
     // Set the value of the movies reducer:
     yield put({
       type: 'SET_MOVIE_DETAILS',

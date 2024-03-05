@@ -5,7 +5,7 @@ function MovieItem({ movie }) {
 
   const handleClickToDetails = (id) => {
     console.log('handleClickToDetails', { id });
-    history.push(`/detailsPage/${id}`);
+    history.push(`/details/${id}`);
   };
 
   return (

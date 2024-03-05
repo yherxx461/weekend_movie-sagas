@@ -1,43 +1,46 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 function DetailsPage() {
-  // Calling id from params
-  const movies = useSelector((store) => store.movies);
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const [movieData, setMovieData] = useState();
+  const movie = useSelector((store) => store.movieDetails);
   const history = useHistory();
 
-  useEffect(() => {
-    //array.find() method helps find the movie object by directly looking for the specific id;
-    const movie = movies.find((movieItem) => movieItem.id == parseInt(id));
-    setMovieData(movie);
-  }, [movies, id]);
-
+  //handlebacktolist
   const handleBackToMovies = () => {
     console.log('in handleBackToMovies');
     history.push('/');
   };
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: id });
+  }, [id, dispatch]);
+
   return (
     <>
-      {/* TO-DO: "movieDetails attribute added." */}
+      {/* TO-DO: "movieDetails attribute must be add" */}
+      <div className="movieImage">
+        <img src={movie.poster} />
+      </div>
       <div data-testid="movieDetails" className="movieDetails">
         <h1>Movie Details</h1>
-        {movieData && (
-          <div>
-            <h3>{movieData.title}</h3>
-            <img src={movieData.poster} alt={movieData.title} />
-            <p>Description: {movieData.description}</p>
-            {/* TO-DO: make genre appears here. */}
-            <p>Genre: {movieData.genre}</p>
-          </div>
-        )}
-        {/* TO-DO: Must have a "back to movie list" button with data-testid="toList" attributes */}
-        <button data-testid="toList" onClick={handleBackToMovies}>
-          Back
-        </button>
+        <div className="movieDescription">
+          <h3>{movie.title}</h3>
+          <p>{movie.description}</p>
+          {/* TO-DO: make genre appears here */}
+          <p>Genres: {movie.genre}</p>
+          {/* TO-DO: must have a back toList button */}
+          <button
+            data-testid="toList"
+            className="backButton"
+            onClick={handleBackToMovies}
+          >
+            Back
+          </button>
+        </div>
       </div>
     </>
   );
