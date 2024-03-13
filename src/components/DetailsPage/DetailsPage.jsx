@@ -22,10 +22,10 @@ function DetailsPage() {
   return (
     <>
       {/* TO-DO: "movieDetails attribute must be add" */}
-      <div className="movieImage">
+      <div data-testid="movieDetails" className="movieImage">
         <h1>Movie Details</h1>
         <img src={movie.poster} />
-        <div data-testid="movieDetails" className="movieDetails">
+        <div className="movieDetails">
           <div className="movieDescription">
             <h3>{movie.title}</h3>
             <p>{movie.description}</p>
